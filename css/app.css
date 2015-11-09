@@ -7,6 +7,23 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.homeBody {
+    background-image: url("../img/concert-audience.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/concert-audience.jpg');
+    background-size: auto 100vh;
+    background-repeat: no-repeat;
+}
+
+.homeText {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    
+}
+
 small {
     font-size: 10px !important;
 }

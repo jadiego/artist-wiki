@@ -2,70 +2,13 @@ var echoNestKey = "PQNZXJGBHUU5MMM5K";
 var echoNestBase = "http://developer.echonest.com/api/v4/"
 //Example: http://developer.echonest.com/api/v4/artist/blogs?api_key=PQNZXJGBHUU5MMM5K&id=ARH6W4X1187B99274F&format=json&results=1&start=0
 
-var myApp = angular.module('myApp', ['spotify', 'firebase'])
+var myApp = angular.module('myApp', ['spotify'])
 
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 });
 
-myApp.controller('myCtrl', function($http, $scope, $firebaseAuth, $firebaseArray, $firebaseObject, Spotify) {
-    
-    /*============================FIREBASE=================================*/
-    var ref = new Firebase("https://spotify-demo.firebaseio.com/");
-    var userRef = ref.child("users");
-    
-    $scope.users = $firebaseObject(userRef);
-    
-    // SignUp function
-    $scope.signUp = function() {
-        // Create user
-        $scope.authObj.$createUser({
-            email: $scope.email,
-            password: $scope.password,          
-        })
-
-        // Once the user is created, call the logIn function
-        .then($scope.logIn)
-
-        // Once logged in, set and save the user data
-        .then(function(authData) {
-            $scope.userId = authData.uid;
-            $scope.users.$save()
-        })
-
-        // Catch any errors
-        .catch(function(error) {
-            console.error("Error: ", error);
-        });
-    };
-
-    // SignIn function
-    $scope.signIn = function() {
-        $scope.logIn().then(function(authData){
-            $scope.userId = authData.uid;
-        })
-    };
-
-    // LogIn function
-    $scope.logIn = function() {
-        $('.userModal').modal('hide')
-        return $scope.authObj.$authWithPassword({
-            email: $scope.email,
-            password: $scope.password
-        })
-    };
-
-    // LogOut function
-    $scope.logOut = function() {
-        $scope.authObj.$unauth()
-        $scope.userId = false
-    };
-    
-    // Create authorization object that refers to firebase
-    $scope.authObj = $firebaseAuth(ref);
-    
-    /*=====================================================================*/
-    
+myApp.controller('myCtrl', function($http, $scope, Spotify) {
     
     /*=============================SPOTIFY=================================*/
     
