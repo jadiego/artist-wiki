@@ -8,11 +8,17 @@ body {
 }
 
 .homeBody {
-    background-image: url("../img/concert-audience.jpg");
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/concert-audience.jpg');
-    background-size: auto 100vh;
-    background-repeat: no-repeat;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("../img/concert-audience.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+
 
 .homeText {
     color: white;
